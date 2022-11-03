@@ -59,9 +59,6 @@ public class Cliente {
 		this.dataNascimento = dataNascimento;
 		this.cpf = cpf;
 		this.aceitaTermos = aceitaTermos;
-		this.dataHoraDoCadastro = LocalDateTime.now();
-		
+		this.dataHoraDoCadastro = LocalDateTime.now();	
 	}
-
-	
 }
