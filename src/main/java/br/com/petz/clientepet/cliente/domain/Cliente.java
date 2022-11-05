@@ -50,7 +50,6 @@ public class Cliente {
 	
 
 	public Cliente(ClienteRequest clienteRequest) {
-		//this.idCliente = UUID.randomUUID();
 		this.nomeCompleto = clienteRequest.getNomeCompleto();
 		this.email = clienteRequest.getEmail();
 		this.celular = clienteRequest.getCelular();
