@@ -19,6 +19,9 @@ public class ClienteListResponse {
 		return clientes.stream()
 				.map(ClienteListResponse::new)
 				.collect(Collectors.toList());
+		//STREAM FOR/LOOB, FUNCIONAL DENTRO FLUXO DE DADOS! 
+		//MAP - TRANSFORMAÇÃO DO FLUXO QUE É CLIENTE E O RESULTADO, TRANFORMA
+		//COLLECT - COLETA TUDO E JUNTO E TRASNFORMAR EM UMA LISTA - COLLECTORES  
 	}
 
 	private ClienteListResponse(Cliente cliente) {

@@ -28,7 +28,7 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", updatable = false, unique = true, nullable = false)
-	private UUID idCliente;
+	private UUID idCliente; //segurança
 	@NotBlank
 	private String nomeCompleto;
 	@NotBlank
