@@ -31,8 +31,9 @@ public class ClienteApplicationService implements ClienteService {
 	@Override
 	public List<ClienteListResponse> buscarTodosClientes() {
 		log.info("[inicia] ClienteApplicationService - buscarTodosClientes");
+		List<Cliente> clientes = clienteRepository.buscaTodosClientes();
 		log.info("[finaliza] ClienteApplicationService - buscarTodosClientes");
-		return null;
+		return ClienteListResponse.converte(clientes);
 	}
 }
 //para resolver porblmea, qual problema ? cirando cliente, salvando cliente e retornando o id do cliente
