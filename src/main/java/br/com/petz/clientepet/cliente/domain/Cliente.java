@@ -61,3 +61,5 @@ public class Cliente {
 		this.dataHoraDoCadastro = LocalDateTime.now();
 		}
 }
+
+//definimos o modelo de negocio, dominio e construtor

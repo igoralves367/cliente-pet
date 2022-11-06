@@ -20,5 +20,5 @@ public class ClienteInfraRepository implements ClienteRepository {
 		log.info("[finaliza] ClienteInfraRepository - salva");
 		return cliente;
 	}
-
 }
+//cuida do fluxo do repositori e chama o jpa para fazer o trabalho sujo

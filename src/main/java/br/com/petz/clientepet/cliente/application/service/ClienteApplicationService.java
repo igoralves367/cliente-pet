@@ -24,5 +24,5 @@ public class ClienteApplicationService implements ClienteService {
 				.idCliente(cliente.getIdCliente())
 				.build();
 	}
-
 }
+//para resolver porblmea, qual problema ? cirando cliente, salvando cliente e retornando o id do cliente

@@ -29,3 +29,5 @@ public class ClienteRequest {
 	@NotNull
 	private Boolean aceitaTermos;
 }
+
+//o que tem que vir

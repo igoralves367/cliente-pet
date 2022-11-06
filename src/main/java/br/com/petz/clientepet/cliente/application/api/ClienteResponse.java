@@ -10,3 +10,4 @@ import lombok.Value;
 public class ClienteResponse {
 	private UUID idCliente;
 }
+//o que vai sair
