@@ -24,8 +24,9 @@ public class ClienteController implements ClienteAPI {
 	@Override
 	public List<ClienteListResponse> getTodosClientes() {
 		log.info("[inicia] ClienteController - getTodosClientes");
+		List<ClienteListResponse> clientes = clienteService.buscarTodosClientes();
 		log.info("[finaliza] ClienteController - getTodosClientes");
-		return null;
+		return clientes;
 	}
 }
 //implementamos o contrato no controler
