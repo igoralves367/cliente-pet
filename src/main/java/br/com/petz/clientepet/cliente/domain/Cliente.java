@@ -33,6 +33,7 @@ public class Cliente {
 	private String nomeCompleto;
 	@NotBlank
 	@Email
+	@Column(unique = true) //(para que não seja alterados e também pq não pode repetir dois nomes)
 	private String email;
 	@NotBlank
 	private String celular;
@@ -41,6 +42,7 @@ public class Cliente {
 	@NotNull
 	private LocalDate dataNascimento;
 	@CPF
+	@Column(unique = true)
 	private String cpf; 
 	@NotNull
 	private Boolean aceitaTermos;
