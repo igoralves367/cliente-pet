@@ -37,5 +37,11 @@ public class ClienteController implements ClienteAPI {
 		log.info("[finaliza] ClienteController - getClienteAtravesId");
 		return clienteDetalhado;
 	}
+	@Override
+	public void deletalienteAtravesId(UUID idCliente) {
+		log.info("[inicia] ClienteController - deletalienteAtravesId");
+		log.info("[idCliente] {}", idCliente); 
+		log.info("[finaliza] ClienteController - deletalienteAtravesId");
+	}
 }
 //implementamos o contrato no controler
