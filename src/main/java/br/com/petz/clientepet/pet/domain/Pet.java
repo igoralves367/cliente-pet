@@ -26,15 +26,18 @@ public class Pet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(columnDefinition = "uuid", name = "idPet", updatable = false, unique = true, nullable = false)
-	private UUID idPet; //segurança
+	private UUID idPet;
 	@NotBlank
 	private String nomePet;
 	@Enumerated(EnumType.STRING)
 	private Porte porte;
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private TipoPet tipo;
 	private String microchip;
+	@NotBlank
 	private String raca;
+	@NotNull
 	@Enumerated(EnumType.STRING)
 	private SexoPet sexo;
 	private String pelagemCor;
