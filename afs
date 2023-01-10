@@ -1,0 +1,107 @@
+[1mdiff --git a/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteAPI.java b/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteAPI.java[m
+[1mindex 55e670f..afdbd95 100644[m
+[1m--- a/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteAPI.java[m
+[1m+++ b/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteAPI.java[m
+[36m@@ -1,8 +1,11 @@[m
+ package br.com.petz.clientepet.cliente.application.api;[m
+ [m
+[32m+[m[32mimport java.util.List;[m
+[32m+[m
+ import javax.validation.Valid;[m
+ [m
+ import org.springframework.http.HttpStatus;[m
+[32m+[m[32mimport org.springframework.web.bind.annotation.GetMapping;[m
+ import org.springframework.web.bind.annotation.PostMapping;[m
+ import org.springframework.web.bind.annotation.RequestBody;[m
+ import org.springframework.web.bind.annotation.RequestMapping;[m
+[36m@@ -15,4 +18,10 @@[m [mpublic interface ClienteAPI {[m
+ 	@PostMapping[m
+ 	@ResponseStatus(code = HttpStatus.CREATED)[m
+ 	ClienteResponse postCliente(@Valid @RequestBody ClienteRequest clienteRequest);[m
+[32m+[m[41m	[m
+[32m+[m	[32m@GetMapping[m
+[32m+[m	[32m@ResponseStatus(code = HttpStatus.OK)[m
+[32m+[m	[32mList<ClienteListResponse> getTodosClientes();[m
+ }[m
+[32m+[m
+[32m+[m[32m//começo da api, implementação do contrato[m
+\ No newline at end of file[m
+[1mdiff --git a/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteController.java b/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteController.java[m
+[1mindex de33798..515916a 100644[m
+[1m--- a/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteController.java[m
+[1m+++ b/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteController.java[m
+[36m@@ -1,5 +1,7 @@[m
+ package br.com.petz.clientepet.cliente.application.api;[m
+ [m
+[32m+[m[32mimport java.util.List;[m
+[32m+[m
+ import org.springframework.web.bind.annotation.RestController;[m
+ [m
+ import br.com.petz.clientepet.cliente.application.service.ClienteService;[m
+[36m@@ -19,4 +21,11 @@[m [mpublic class ClienteController implements ClienteAPI {[m
+ 		log.info("[finaliza] ClienteController - postCliente");[m
+ 		return clienteCriado;[m
+ 	}[m
+[32m+[m	[32m@Override[m
+[32m+[m	[32mpublic List<ClienteListResponse> getTodosClientes() {[m
+[32m+[m		[32mlog.info("[inicia] ClienteController - getTodosClientes");[m
+[32m+[m		[32mlog.info("[finaliza] ClienteController - getTodosClientes");[m
+[32m+[m		[32mreturn null;[m
+[32m+[m	[32m}[m
+ }[m
+[32m+[m[32m//implementamos o contrato no controler[m
+[1mdiff --git a/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteRequest.java b/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteRequest.java[m
+[1mindex 6fe2828..e534591 100644[m
+[1m--- a/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteRequest.java[m
+[1m+++ b/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteRequest.java[m
+[36m@@ -29,3 +29,5 @@[m [mpublic class ClienteRequest {[m
+ 	@NotNull[m
+ 	private Boolean aceitaTermos;[m
+ }[m
+[32m+[m
+[32m+[m[32m//o que tem que vir[m
+\ No newline at end of file[m
+[1mdiff --git a/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteResponse.java b/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteResponse.java[m
+[1mindex bbf20e3..a990a06 100644[m
+[1m--- a/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteResponse.java[m
+[1m+++ b/src/main/java/br/com/petz/clientepet/cliente/application/api/ClienteResponse.java[m
+[36m@@ -10,3 +10,4 @@[m [mimport lombok.Value;[m
+ public class ClienteResponse {[m
+ 	private UUID idCliente;[m
+ }[m
+[32m+[m[32m//o que vai sair[m
+\ No newline at end of file[m
+[1mdiff --git a/src/main/java/br/com/petz/clientepet/cliente/application/service/ClienteApplicationService.java b/src/main/java/br/com/petz/clientepet/cliente/application/service/ClienteApplicationService.java[m
+[1mindex 3765bce..d5b5030 100644[m
+[1m--- a/src/main/java/br/com/petz/clientepet/cliente/application/service/ClienteApplicationService.java[m
+[1m+++ b/src/main/java/br/com/petz/clientepet/cliente/application/service/ClienteApplicationService.java[m
+[36m@@ -24,5 +24,5 @@[m [mpublic class ClienteApplicationService implements ClienteService {[m
+ 				.idCliente(cliente.getIdCliente())[m
+ 				.build();[m
+ 	}[m
+[31m-[m
+ }[m
+[32m+[m[32m//para resolver porblmea, qual problema ? cirando cliente, salvando cliente e retornando o id do cliente[m
+[1mdiff --git a/src/main/java/br/com/petz/clientepet/cliente/domain/Cliente.java b/src/main/java/br/com/petz/clientepet/cliente/domain/Cliente.java[m
+[1mindex 44cd619..8da9cf9 100644[m
+[1m--- a/src/main/java/br/com/petz/clientepet/cliente/domain/Cliente.java[m
+[1m+++ b/src/main/java/br/com/petz/clientepet/cliente/domain/Cliente.java[m
+[36m@@ -61,3 +61,5 @@[m [mpublic class Cliente {[m
+ 		this.dataHoraDoCadastro = LocalDateTime.now();[m
+ 		}[m
+ }[m
+[32m+[m
+[32m+[m[32m//definimos o modelo de negocio, dominio e construtor[m
+\ No newline at end of file[m
+[1mdiff --git a/src/main/java/br/com/petz/clientepet/cliente/infra/ClienteInfraRepository.java b/src/main/java/br/com/petz/clientepet/cliente/infra/ClienteInfraRepository.java[m
+[1mindex 36ec194..70bfb76 100644[m
+[1m--- a/src/main/java/br/com/petz/clientepet/cliente/infra/ClienteInfraRepository.java[m
+[1m+++ b/src/main/java/br/com/petz/clientepet/cliente/infra/ClienteInfraRepository.java[m
+[36m@@ -20,5 +20,5 @@[m [mpublic class ClienteInfraRepository implements ClienteRepository {[m
+ 		log.info("[finaliza] ClienteInfraRepository - salva");[m
+ 		return cliente;[m
+ 	}[m
+[31m-[m
+ }[m
+[32m+[m[32m//cuida do fluxo do repositori e chama o jpa para fazer o trabalho sujo[m
+\ No newline at end of file[m
